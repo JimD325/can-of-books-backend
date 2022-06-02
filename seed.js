@@ -15,7 +15,7 @@ async function seed() {
 
   book.save(function (err) {
     if (err) console.log(err);
-    else console.log('bitcoin to the moon')
+    else console.log('bitcoin to the mooooooooooooooon')
   })
 
   await Book.create({
