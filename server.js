@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3002;
 
 // Mongoose implemented below per guidelines given in class 11 repo. 
 const mongoose = require('mongoose');
+const BookModel = require('./books');
 // below you make what is called a connection string, it is stored in env file. what we are conencting in process.env is bananas. This is where we connect to mongoDB hosted on atlas.
 mongoose.connect(process.env.MONGODB_URI);
 // creating an instance of mongodb connection and assigning it to a variable
@@ -28,6 +29,12 @@ app.get('/test', (request, response) => {
 
   response.send('test request received')
 
+})
+
+app.get('/books', async (req,res)=>{
+  const books = await BookModel.find({})
+
+  res.send(books)
 })
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
