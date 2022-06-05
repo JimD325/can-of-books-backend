@@ -1,7 +1,7 @@
 # Can of Books Backend
 
 **Author**: Jim Doyle | Luis Sandoval
-**Version**: 1.0.2 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -27,11 +27,11 @@
 
 - [MDN Docs](https://developer.mozilla.org/en-US/)
 
-Name of feature: Create and Delete
+Name of feature: Update a Resource
 
-Estimate of time needed to complete: 3 hours
+Estimate of time needed to complete: 1 hour
 
-Start time: 6/4 4:00PM
+Start time: 6/5 1:00PM
 
 Finish time: 6/5 12:30PM
 
