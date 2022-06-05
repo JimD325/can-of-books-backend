@@ -32,8 +32,9 @@ app.get('/test', (request, response) => {
 })
 
 app.get('/books', async (req,res)=>{
-  const books = await BookModel.find({})
-  res.send(books)
+  const books = await BookModel.find({});
+  res.send(books);
+  console.log(req);
 })
 
 app.post('/books', async (req, res) =>{
@@ -43,7 +44,7 @@ app.post('/books', async (req, res) =>{
   const newBook = await BookModel.create(req.body);
   // we want to send the newBook that has been created in MongoDB back to the React Client so that react can save it in the state object. This makes it so when we go to delete/update that newBook, we have the MongoID to do it with.  
   // Newbook below is a JSON representation coming to the frontend from the backen. 
-  response.status(201).send(newBook);
+  res.status(201).send(newBook);
   }
   catch(error) {
     console.error(error);
@@ -51,4 +52,15 @@ app.post('/books', async (req, res) =>{
   }
 })
 
+app.delete('/books/:id', async (req, res)=>{
+    try{
+      await BookModel.findByIdAndDelete(req.params.id);
+      res.status(204);
+    } catch (error) {
+      console.error(error); 
+      res.status(500).send('Error when deleting book')
+    }
+})
+
+console.log('hello');
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
