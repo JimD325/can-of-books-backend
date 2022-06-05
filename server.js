@@ -62,5 +62,11 @@ app.delete('/books/:id', async (req, res)=>{
     }
 })
 
+
+app.put('/books/:id', async (request, response) => {
+  const updatedBook = await BookModel.findByIdAndUpdate(request.params.id, request.body, {overwrite: true, new: true});
+  response.status(200).send(updatedBook);
+})
+
 console.log('hello');
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
