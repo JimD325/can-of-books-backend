@@ -36,7 +36,8 @@ app.get('/test', (request, response) => {
 app.get('/books', async (req, res) => {
   try {
     // make a query to Mongo asking it to find the books with an email that matches the req.user.email
-    const booksFromDb = await BookModel.find({ email: req.user.email });
+    const booksFromDb = await BookModel.find({ email: req.params.email });
+    console.log(res.data);
     if (booksFromDb.length > 0) {
       res.status(200).send(booksFromDb);
     } else {
@@ -52,8 +53,8 @@ app.get('/books', async (req, res) => {
 // want to send the newBook that has been created in MongoDB back to the React Client so that react can save it in the state object. This makes it so when we go to delete/update that newBook, we have the MongoID to do it with.  
 // Newbook below is a JSON representation coming to the frontend from the backen. 
 app.post('/books', async (req, res) => {
+  const { title, description, status } = req.body;
   try {
-    const { title, description, status } = req.body;
     const newBook = await BookModel.create({ ...req.body, email: req.user.email });
     res.status(201).send(newBook);
   }
